@@ -1,0 +1,139 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  color-scheme: light dark;
+  color: #212121;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, ::before, ::after {
+  box-sizing: content-box;
+}
+
+html {
+  font-size: 10px;
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  width: 100%;
+}
+section {
+  padding: 1rem 2rem;
+}
+h1 {
+  font-family: 'Gill Sans MT', sans-serif;
+  font-size: 3rem;
+  text-align: center;
+}
+a {
+  height: 100%;
+  display: inline-block;
+}
+svg {
+  pointer-events: none;
+}
+
+.wrapper {
+  position: relative;
+}
+.sr-only {
+  width: .1rem;
+  height: .1rem;
+  visibility: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+header {
+  padding: 1rem 2rem;
+  height: 8rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  font-family: 'Gill Sans MT', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.header-nav__link:not(:first-of-type) {
+  margin-left: 1rem;
+}
+
+.header-nav__link {
+  min-height: 40px;
+  width: 40px;
+  position: relative;
+}
+
+.header-nav__link > svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main {
+  margin-bottom: 2rem;
+}
+.product {
+  padding: 0;
+  width: 50%;
+  max-width: 25rem;
+  min-height: 22rem;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 1rem;
+  text-align: left;
+}
+.product:hover, .product:focus, .product:focus-visible {
+  background-color: #e1e1e1;
+}
+.product__img {
+  width: 100%;
+  max-height: 15rem;
+  object-fit: cover;
+}
+.product__name, .product__price, .product__provider {
+  margin: 0;
+  padding: 0 .5rem;
+}
+.product__price {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.product__name {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+.product__provider {
+  margin-bottom: .5rem;
+  font-size: 1.4rem;
+  text-align: right;
+}
+
+footer {
+  padding: 1rem 2rem;
+  min-height: 10rem;
+  height: 100%;
+  background-color: #f1f1f1;
+}
+
+.footer__notice {
+  font-size: 1.2rem;
+}
