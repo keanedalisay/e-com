@@ -31,6 +31,17 @@ h1 {
   font-size: 3rem;
   text-align: center;
 }
+h2 {
+  font-family: 'Gill Sans MT', sans-serif;
+  font-size: 2.4rem;
+}
+h3 {
+  font-family: 'Gill Sans MT', sans-serif;
+  font-size: 2rem
+}
+p {
+  font-size: 1.6rem;
+}
 a {
   height: 100%;
   display: inline-block;
@@ -40,7 +51,10 @@ svg {
 }
 
 .wrapper {
+  width: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 .sr-only {
   width: .1rem;
@@ -85,46 +99,6 @@ header {
 
 main {
   margin-bottom: 2rem;
-}
-.product {
-  padding: 0;
-  width: 50%;
-  max-width: 25rem;
-  min-height: 22rem;
-  position: relative;
-  display: flex;
-  flex-flow: column wrap;
-  background-color: #f1f1f1;
-  border: none;
-  border-radius: 1rem;
-  text-align: left;
-}
-.product:hover, .product:focus, .product:focus-visible {
-  background-color: #e1e1e1;
-}
-.product__img {
-  width: 100%;
-  max-height: 15rem;
-  object-fit: cover;
-}
-.product__name, .product__price, .product__provider {
-  margin: 0;
-  padding: 0 .5rem;
-}
-.product__price {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.product__name {
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-}
-.product__provider {
-  margin-bottom: .5rem;
-  font-size: 1.4rem;
-  text-align: right;
 }
 
 footer {
