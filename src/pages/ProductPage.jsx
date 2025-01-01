@@ -12,7 +12,16 @@ export default function ProductPage() {
           <h2 class="product__name">
             Durable 10-Gallon Multipurpose Grey Storage Bucket
           </h2>
-          <p class="product__provider">Gina Taliso</p>
+          <p class="product__provider">Distributed by Gina Taliso</p>
+        </section>
+        <section class="quantity">
+            <h2 class="quantity__label">You are buying: <b>0 item/s</b></h2>
+            <div class="wrapper">
+              <button class="quantity__btn">+</button>
+              <button class="quantity__btn">-</button>
+            </div>
+          </section>
+        <section>
           <button class="product__add-to-cart">Add to Cart</button>
         </section>
         <section>
