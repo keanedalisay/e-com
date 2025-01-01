@@ -1,7 +1,18 @@
+import { useState } from "preact/hooks";
+
 import bucket from "../assets/bucket.jpg";
 import "../styles/product-page.css";
 
 export default function ProductPage() {
+  const [count, setCount] = useState(0);
+  
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount((count) => {
+    if (count < 1) 
+      return 0;
+    return count - 1;
+  })
+
   return (
     <>
       <main>
@@ -15,10 +26,10 @@ export default function ProductPage() {
           <p class="product__provider">Distributed by Gina Taliso</p>
         </section>
         <section class="quantity">
-            <h2 class="quantity__label">You are buying: <b>0 item/s</b></h2>
+            <h2 class="quantity__label">You are buying: <b>{count} item/s</b></h2>
             <div class="wrapper">
-              <button class="quantity__btn">+</button>
-              <button class="quantity__btn">-</button>
+              <button class="quantity__btn" onClick={increment}>+</button>
+              <button class="quantity__btn" onClick={decrement}>-</button>
             </div>
           </section>
         <section>
