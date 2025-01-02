@@ -101,6 +101,20 @@ main {
   margin-bottom: 2rem;
 }
 
+.cart-count {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b22525;
+  border-radius: 1rem;
+  color: #ffffff;
+}
+
 footer {
   padding: 1rem 2rem;
   min-height: 10rem;

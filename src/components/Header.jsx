@@ -1,4 +1,4 @@
-export default function Header() {
+export default function Header(props) {
   return (
     <>
       <header>
@@ -14,6 +14,7 @@ export default function Header() {
               <path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.304-15l-3.431 12h-2.102l2.542-9h-16.813l4.615 11h13.239l3.474-12h1.929l.743-2h-4.196z" />
             </svg>
             <span class="sr-only">Cart</span>
+            <span class="cart-count" style={ props.cart.count < 1 ? {display: "none"} : {} }>{props.cart.count}</span>
           </a>
           <a class="header-nav__link" href="/profile">
             <svg
