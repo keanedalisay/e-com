@@ -1,32 +1,28 @@
 import { render } from "preact";
 
-import bucket from "./assets/bucket.jpg";
-
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ProductPage from "./pages/ProductPage";
+
+import Cart from "./models/Cart";
 
 import "./index.css";
+
+const CartState = new Cart();
+
 
 function App() {
   return (
     <>
-      <Header></Header>
-      <main>
-        <section>
-          <h1>Products</h1>
-          <div class="products">
-            <button class="product">
-              <img  class="product__img"src={bucket} alt="A grey bucket" />
-              <p class="product__price">$10</p>
-              <p class="product__name">Bucket Tin Can Do Be Do </p>
-              <p class="product__provider">Gina Taliso</p>
-            </button>
-          </div>
-        </section>
-      </main>
+      <Header cart={CartState}></Header>
+      <ProductPage cart={CartState}></ProductPage>
       <Footer></Footer>
     </>
   );
 }
 
-render(<App />, document.getElementById("app"));
+render(
+  <App />
+  ,
+  document.getElementById("app")
+);
