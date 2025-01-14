@@ -1,0 +1,12 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Durable 10-Gallon Multipurpose Grey Storage Bucket",
+            "price": 10,
+            "in-stock": 21,
+            "distributor": "Gina Taliso",
+            "description": "The Durable 10-Gallon Multipurpose Grey Storage Bucket is your go-to solution for a variety of tasks, whether indoors or outdoors. Made from high-quality, BPA-free plastic, this bucket combines strength and versatility, making it ideal for cleaning, organizing, gardening, and more. Its sleek grey finish seamlessly complements any setting, from modern homes to industrial workspaces."
+        }
+    ]
+}
