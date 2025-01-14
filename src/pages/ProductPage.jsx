@@ -1,64 +1,104 @@
-import { useState } from "preact/hooks";
+import { Component } from "preact";
+
+import Product from "../models/Product";
 
 import bucket from "../assets/bucket.jpg";
 import "../styles/product-page.css";
 
+class QuantitySelector extends Component {
+  constructor() {
+    super();
+    this.state = { quantity: 0 };
+  }
 
-export default function ProductPage(props) {
-  const [quantity, setQuantity] = useState(0);
+  increaseQuantity = () => this.setState(this.state.quantity += 1);
 
-  const increaseQuantity = () => setQuantity(quantity + 1);
-  const decreaseQuantity = () => setQuantity((quantity) => {
-    if (quantity < 1)
-      return 0;
-    return quantity - 1;
+  decreaseQuantity = () => this.setState(() => {
+    if (this.state.quantity > 0)
+      this.state.quantity -= 1;
+    return this.state;
   });
 
-  return <>
-    <main>
-      <section>
-        <img class="product__img" src={bucket} alt="A grey bucket" />
-        <h1 class="product__price">$10</h1>
-        <p class="product__stock product__stock--out">In stock: 21</p>
-        <h2 class="product__name">
-          Durable 10-Gallon Multipurpose Grey Storage Bucket
-        </h2>
-        <p class="product__provider">Distributed by Gina Taliso</p>
-      </section>
+  resetQuantity = () => this.setState(this.state.quantity = 0)
+
+  render({cart, product}, state) {
+    return <>
       <section class="quantity">
-        <h2 class="quantity__label">You are buying: <b>{quantity} item/s</b></h2>
+        <h2 class="quantity__label">You are buying: <b>{state.quantity} item/s</b></h2>
         <div class="wrapper">
-          <button class="quantity__btn" onClick={increaseQuantity}>+</button>
-          <button class="quantity__btn" onClick={decreaseQuantity}>-</button>
+          <button class="quantity__btn" onClick={this.increaseQuantity}>+</button>
+          <button class="quantity__btn" onClick={this.decreaseQuantity}>-</button>
         </div>
       </section>
       <section>
-        <form onSubmit={props.cart.add}>
-          <input name="name" type="hidden" value="Durable 10-Gallon Multipurpose Grey Storage Bucket"></input>
-          <input name="distributor" type="hidden" value="Gina Taliso"></input>
-          <input name="quantity" type="hidden" value={quantity}></input>
-          <button class="product__add-to-cart" type="submit">Add to Cart</button>
-        </form>
+          <form onSubmit={(e) => {
+            this.resetQuantity()
+            cart.add(e)
+            }}>
+            <input name="name" type="hidden" value={product.name}></input>
+            <input name="distributor" type="hidden" value={product.dstbr}></input>
+            <input name="quantity" type="hidden" value={state.quantity}></input>
+            <button class="product__add-to-cart" type="submit">Add to Cart</button>
+          </form>
       </section>
-      <section>
-        <h3>Specifications</h3>
-        <p>Material: BPA-free high-density polyethylene (HDPE)</p>
-        <p>Capacity: 10 gallons (37.8 liters)</p>
-        <p>Dimensions: 15" diameter x 17" height</p>
-        <p>Color: Grey</p>
-        <p>Weight: 2.5 lbs</p>
-      </section>
-      <section>
-        <h3>Description</h3>
-        <p class="product__desc">
-          The Durable 10-Gallon Multipurpose Grey Storage Bucket is your go-to
-          solution for a variety of tasks, whether indoors or outdoors. Made
-          from high-quality, BPA-free plastic, this bucket combines strength
-          and versatility, making it ideal for cleaning, organizing,
-          gardening, and more. Its sleek grey finish seamlessly complements
-          any setting, from modern homes to industrial workspaces.
-        </p>
-      </section>
-    </main>
-  </>;
+    </>
+  }
+}
+
+export default class ProductPage extends Component {
+  constructor() {
+    super();
+    this.state = new Product();
+  }
+
+  async componentDidMount() {
+    const result = await (await fetch("http://localhost:3000/products/1", { mode: "cors" })).json();
+
+    this.setState(() => {
+      this.state.name = result.name;
+      this.state.price = result.price;
+      this.state.dstbr = result.distributor;
+      this.state.inStock = result["in-stock"];
+      this.state.desc = result.description;
+
+      return this.state;
+    });
+  }
+  
+  render ({cart}, state) {
+    if (state.name === "") {
+      return <>
+        <div>Loading... </div>
+      </>
+    }
+
+    return <>
+      <main>
+        <section>
+          <img class="product__img" src={bucket} alt="A grey bucket" />
+          <h1 class="product__price">${state.price}</h1>
+          <p class="product__stock product__stock--out">In stock: {state.inStock}</p>
+          <h2 class="product__name">
+            {state.name}
+          </h2>
+          <p class="product__provider">Distributed by Gina Taliso</p>
+        </section>
+        <QuantitySelector cart={cart} product={state}></QuantitySelector>
+        <section>
+          <h3>Specifications</h3>
+          <p>Material: BPA-free high-density polyethylene (HDPE)</p>
+          <p>Capacity: 10 gallons (37.8 liters)</p>
+          <p>Dimensions: 15" diameter x 17" height</p>
+          <p>Color: Grey</p>
+          <p>Weight: 2.5 lbs</p>
+        </section>
+        <section>
+          <h3>Description</h3>
+          <p class="product__desc">
+            {state.desc}
+          </p>
+        </section>
+      </main>
+    </>;
+  }
 }
