@@ -5,9 +5,6 @@ import Product from "../models/Product";
 import bucket from "../assets/bucket.jpg";
 import "../styles/product-page.css";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-
 class QuantitySelector extends Component {
   constructor() {
     super();
@@ -76,7 +73,6 @@ export default class ProductPage extends Component {
     }
 
     return <>
-      <Header cart={cart}></Header>
       <main>
         <section>
           <img class="product__img" src={bucket} alt="A grey bucket" />
@@ -103,7 +99,6 @@ export default class ProductPage extends Component {
           </p>
         </section>
       </main>
-      <Footer></Footer>
     </>;
   }
 }
