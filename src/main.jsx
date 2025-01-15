@@ -1,9 +1,13 @@
 import { render } from "preact";
 import { LocationProvider, Router } from "preact-iso";
 
-import ProductPage from "./pages/ProductPage";
-
 import Cart from "./models/Cart";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
+import ProductPage from "./pages/ProductPage";
 
 import "./index.css";
 
@@ -14,6 +18,7 @@ function App() {
     <>
       <LocationProvider>
         <Router>
+          <Home path="/"></Home>
           <ProductPage path="/products/12121-3231" cart={CartState}></ProductPage>
         </Router>
       </LocationProvider>
@@ -22,7 +27,11 @@ function App() {
 }
 
 render(
-  <App />
+  <>
+    <Header cart={CartState}></Header>
+    <App />
+    <Footer></Footer>
+  </>
   ,
   document.getElementById("app")
 );
