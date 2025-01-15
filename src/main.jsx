@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
+import NotFound from "./pages/NotFound";
 
 import "./index.css";
 
@@ -20,6 +21,7 @@ function App() {
         <Router>
           <Home path="/"></Home>
           <ProductPage path="/products/12121-3231" cart={CartState}></ProductPage>
+          <NotFound default></NotFound>
         </Router>
       </LocationProvider>
     </>
