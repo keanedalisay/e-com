@@ -12,7 +12,8 @@
   "dependencies": {
     "@preact/signals": "^2.0.0",
     "json-server": "^0.17.4",
-    "preact": "^10.25.3"
+    "preact": "^10.25.3",
+    "preact-iso": "^2.8.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.9.3",
